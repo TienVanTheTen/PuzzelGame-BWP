@@ -7,11 +7,12 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     [SerializeField] private float speed;
     [SerializeField] private float jumpingPower;
-    private bool isFacingRight = true;
     private Rigidbody2D rb;
     private GameObject objectGroundCheck;
     private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+
+    private const string HORIZONTAL_AXIS = "Horizontal";
 
     private void Start()
     {
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         Jumping();
 
         //get input walking
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw(HORIZONTAL_AXIS);
         Flip();
     }
     private void FixedUpdate()
@@ -63,12 +64,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Flip()
     {
-        if (isFacingRight & horizontal < 0f || !isFacingRight & horizontal > 0f)
-        {
-            isFacingRight = !isFacingRight; 
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
+        Vector3 differencePos = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 localScale = transform.localScale;
+        localScale.x = differencePos.x >= 0 ? -1 : 1;
+        transform.localScale = localScale;
     }
 }

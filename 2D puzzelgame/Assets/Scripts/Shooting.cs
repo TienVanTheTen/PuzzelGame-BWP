@@ -5,8 +5,11 @@ using UnityEngine;
 public class Shooting : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject shootingPoint;
     [SerializeField] private float throwSpeed;
     [SerializeField] private float maxSpeed;
+    [SerializeField] private float rotationSpeedStok;
+   
     private float offset;
     void Start()
     {
@@ -25,15 +28,27 @@ public class Shooting : MonoBehaviour
 
     private void Shoot()
     {
-        Vector2 playerPos = new Vector2(this.gameObject.transform.position.x + 1f, this.gameObject.transform.position.y + 1f);
+        Vector2 shootingPointPlayer = new(shootingPoint.transform.position.x, shootingPoint.transform.position.y);
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 angle = mousePosition - playerPos;
-        GameObject stok = Instantiate(bullet, playerPos, Quaternion.identity);
+        Vector2 direction = mousePosition - shootingPointPlayer;
+        GameObject stok = Instantiate(bullet, shootingPointPlayer, Quaternion.identity);
         Rigidbody2D rbStok = stok.GetComponent<Rigidbody2D>();
+        
+        
+        if(transform.localScale.x > 0)
+        {
+            direction.x = Mathf.Clamp(direction.x, 0, maxSpeed);
+           
+        }
+        else
+        {
+            direction.x = Mathf.Clamp(direction.x, -maxSpeed, 0);
+          
+        }
+        rbStok.AddTorque(rotationSpeedStok * (direction.x * 10) * -1);
 
-        rbStok.AddForce(angle * throwSpeed);
 
-
-
+        direction.y = Mathf.Clamp(direction.y, -maxSpeed, maxSpeed);
+        rbStok.AddForce(direction * throwSpeed);
     }
 }

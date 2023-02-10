@@ -33,7 +33,7 @@ public class GrabObjects : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && grabbedObject == null)
             {
-                Debug.Log("baanaan");
+               
                 grabbedObject = hitInfo.collider.gameObject;
                 grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 grabbedObject.transform.position = grabPoint.position;

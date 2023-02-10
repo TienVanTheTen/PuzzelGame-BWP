@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class StokScript : MonoBehaviour
 {
-    void awake()
+    private int IndexLayerPickup;
+    private int IndexLayerPlayer;
+    void Start ()
     {
-        
+        IndexLayerPickup = LayerMask.NameToLayer("Pickup");
+        IndexLayerPlayer = LayerMask.NameToLayer("Player");
     }
 
     void Update()
@@ -15,6 +18,10 @@ public class StokScript : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(this.gameObject);
+
+        if (collision.gameObject.layer != IndexLayerPickup && collision.gameObject.layer != IndexLayerPlayer)
+        {
+            Destroy(gameObject);
+        }
     }
 }

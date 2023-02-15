@@ -8,31 +8,60 @@ public class ButtonScript : MonoBehaviour
     [SerializeField] bool stokOnly;
     bool pressed = false;
     const string STOK_TAG = "Stok";
+    [SerializeField] GameObject topPartButton;
+    [SerializeField] float pressDepth;
+    private int layerIndexGround;
     public UnityEvent OnButtonClick;
+    public UnityEvent OnButtonRelease;
+    Vector2 startButtonPos;
+    private void Start()
+    {
+        startButtonPos = topPartButton.transform.localPosition;
+        layerIndexGround = LayerMask.NameToLayer("Ground");
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(pressed) return;
-       
+        if (collision.gameObject.layer == layerIndexGround) return;
+
         if (stokOnly)
         {
             if (collision.CompareTag(STOK_TAG))
             {
                 OnButtonClick?.Invoke();
-                buttonPressed();
+                ButtonPressed();
             }
         }
         else
         {
             OnButtonClick?.Invoke();
-            buttonPressed();
+            ButtonPressed();
         }
         
     }
 
-     void buttonPressed()
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if(!pressed) return;
+        if (stokOnly) return;
+        if (collision.gameObject.layer == layerIndexGround) return;
+        
+        OnButtonRelease?.Invoke();
+        ButtonReleased();
+
+
+    }
+
+    void ButtonPressed()
     {
         
+        topPartButton.transform.localPosition = new Vector2(transform.localPosition.x,transform.localPosition.y - pressDepth/10);
         pressed = true;
-        transform.localPosition = new Vector2(transform.localPosition.x,transform.localPosition.y - .3f); 
+    }
+
+    private void ButtonReleased()
+    {
+     pressed = false;
+     topPartButton.transform.localPosition = startButtonPos;   
     }
 }

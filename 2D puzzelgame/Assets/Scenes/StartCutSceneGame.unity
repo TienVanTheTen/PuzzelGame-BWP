@@ -676,12 +676,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1297454676}
   lines:
-  - hello sir
-  - how you doing
-  - im fine ty for asking
-  - :D
-  - bye
+  - Hello kind sir?
+  - Can you help me with something?
+  - I have been looking for food for the past 2 days.
+  - Sadly I haven't found any yet.
+  - The only food i found was food I can't reach :(
+  - Do you want to help me get the food I cannot reach?
+  - It would mean the world to me :D
   clips:
+  - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
+  - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
   - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
   - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
   - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
@@ -934,8 +938,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: new text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 477e4128671118846be87ca206672c26, type: 2}
-  m_sharedMaterial: {fileID: 7220395039609322927, guid: 477e4128671118846be87ca206672c26, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5820649c8d63f334cb721ff89f04dcd1, type: 2}
+  m_sharedMaterial: {fileID: 4066798857974507618, guid: 5820649c8d63f334cb721ff89f04dcd1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

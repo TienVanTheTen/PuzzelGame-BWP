@@ -74,7 +74,7 @@ public class DialogScript : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("MainGame");
             }
         }
     }

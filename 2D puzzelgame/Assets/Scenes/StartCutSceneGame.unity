@@ -425,7 +425,15 @@ MonoBehaviour:
   textComponent: {fileID: 1297454676}
   lines:
   - hello banaan
+  - hello banaan
+  - hello banaan
+  - hello banaan
+  - hello banaan
   clips:
+  - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
+  - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
+  - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
+  - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
   - {fileID: 8300000, guid: d9ef20876110ed446a05080cdcd386c1, type: 3}
   audioSource: {fileID: 1151797516}
   textSpeed: 0.07

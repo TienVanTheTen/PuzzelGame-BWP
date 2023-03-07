@@ -10,30 +10,25 @@ public class GrabObjects : MonoBehaviour
     [SerializeField] private Transform grabPoint;
     [SerializeField] private Transform rayPoint;
     [SerializeField] private float rayDistance;
-    
-    private int layerIndex;
+    [SerializeField] private LayerMask layerIndex;
+
     private GameObject grabbedObject;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        layerIndex = LayerMask.NameToLayer("Pickup");
-    }
 
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D hitInfo = Physics2D.Raycast(rayPoint.position, transform.forward, rayDistance);
-        
-        if (hitInfo.collider !=null && hitInfo.collider.gameObject.layer == layerIndex)
+        RaycastHit2D hitInfo = Physics2D.Raycast(rayPoint.position, transform.forward, rayDistance, layerIndex);
+        if (!hitInfo)
+            return;
+
+        if (hitInfo.collider != null)
         {
-           
+
             //grab the object
 
             if (Input.GetKeyDown(KeyCode.E) && grabbedObject == null)
             {
-               
+
                 grabbedObject = hitInfo.collider.gameObject;
                 grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 grabbedObject.transform.position = grabPoint.position;
@@ -49,12 +44,12 @@ public class GrabObjects : MonoBehaviour
 
             }
 
-            
+
 
 
 
 
         }
-        
+
     }
 }

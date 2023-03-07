@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TutorialTextScript : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
+    List<TriggerTutorialScript> triggers = new List<TriggerTutorialScript>();
+    TriggerTutorialScript activeTutorial;
 
-
-
-
-    public void DisplayTutorial(string text, float duration)
+    private void Awake()
     {
-        StartCoroutine(text, duration);
+        var triggers = FindObjectsOfType<TriggerTutorialScript>();
+        foreach (var trigger in triggers)
+        {
+            trigger.OnTutorialTrigger += DisplayTutorial;
+        }
+    }
+
+    public void DisplayTutorial(TriggerTutorialScript trigger)
+    {
+        
+         if (activeTutorial)
+        {
+            triggers.Add(trigger);
+        }
+        else
+        {
+            activeTutorial = trigger;
+            StartCoroutine(DisplayTutorialText(trigger.Text, trigger.Duration));
+        }
     }
 
     void Update()
@@ -38,6 +56,16 @@ public class TutorialTextScript : MonoBehaviour
             {
                 if (!forward)
                 {
+                    if (triggers.Count > 0)
+                    {
+                        activeTutorial = triggers[0];
+                        textComponent.text = activeTutorial.Text;
+                        forward = true;
+                        timer = 0f;
+                        triggers.RemoveAt(0);
+                        continue;
+                    }
+                    activeTutorial = null;
                     break;
                 }
 

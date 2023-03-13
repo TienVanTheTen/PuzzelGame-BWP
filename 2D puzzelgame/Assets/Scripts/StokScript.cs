@@ -6,7 +6,7 @@ public class StokScript : MonoBehaviour
 {
     private int IndexLayerPickup;
     private int IndexLayerPlayer;
-    void Start ()
+    void Start()
     {
         IndexLayerPickup = LayerMask.NameToLayer("Pickup");
         IndexLayerPlayer = LayerMask.NameToLayer("Player");
@@ -14,7 +14,7 @@ public class StokScript : MonoBehaviour
 
     void Update()
     {
-        
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

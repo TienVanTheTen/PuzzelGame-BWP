@@ -21,7 +21,7 @@ public class ButtonScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(pressed) return;
+        if (pressed) return;
         if (collision.gameObject.layer == layerIndexGround) return;
 
         if (stokOnly)
@@ -37,15 +37,15 @@ public class ButtonScript : MonoBehaviour
             OnButtonClick?.Invoke();
             ButtonPressed();
         }
-        
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(!pressed) return;
+        if (!pressed) return;
         if (stokOnly) return;
         if (collision.gameObject.layer == layerIndexGround) return;
-        
+
         OnButtonRelease?.Invoke();
         ButtonReleased();
 
@@ -54,14 +54,14 @@ public class ButtonScript : MonoBehaviour
 
     void ButtonPressed()
     {
-        
-        topPartButton.transform.localPosition = new Vector2(transform.localPosition.x,transform.localPosition.y - pressDepth/10);
+
+        topPartButton.transform.localPosition = new Vector2(transform.localPosition.x, transform.localPosition.y - pressDepth / 10);
         pressed = true;
     }
 
     private void ButtonReleased()
     {
-     pressed = false;
-     topPartButton.transform.localPosition = startButtonPos;   
+        pressed = false;
+        topPartButton.transform.localPosition = startButtonPos;
     }
 }

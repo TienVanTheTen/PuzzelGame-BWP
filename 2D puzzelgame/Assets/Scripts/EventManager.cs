@@ -7,10 +7,10 @@ using UnityEngine.Events;
 public class EventManager : MonoBehaviour
 {
     public static event Action OnButtonEvent;
-   
+
 
     private void Update()
     {
-        
+
     }
 }

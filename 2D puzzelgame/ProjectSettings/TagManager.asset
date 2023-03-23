@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Button
   - Stok
+  - Food
   layers:
   - Default
   - TransparentFX

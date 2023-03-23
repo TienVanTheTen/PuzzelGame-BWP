@@ -31,6 +31,7 @@ public class GrabObjects : MonoBehaviour
 
                 grabbedObject = hitInfo.collider.gameObject;
                 grabbedObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                grabbedObject.GetComponent<Rigidbody2D>().velocity= Vector3.zero;
                 grabbedObject.transform.position = grabPoint.position;
                 grabbedObject.transform.SetParent(transform);
 

@@ -15,6 +15,6 @@ public class RotationScript : MonoBehaviour
     void Update()
     {
         rb.angularVelocity = rb.velocity.x * -100;
-        Debug.Log(rb.velocity.x);
+        
     }
 }

@@ -7,12 +7,17 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
     [SerializeField] private float closingDuration;
-    [SerializeField] private Vector2 closedPos;
-    [SerializeField] private Vector2 openPos;
-    
+    [SerializeField] private Vector2 offset;
+    private Vector2 closedPos;
+    private Vector2 openPos;
+    private void Start()
+    {
+        closedPos = transform.position;
+    }
     public void OpenDoor()
     {
         StopAllCoroutines();
+        openPos = closedPos + offset;
         StartCoroutine(MoveDoor(transform.position, openPos));
         
     }

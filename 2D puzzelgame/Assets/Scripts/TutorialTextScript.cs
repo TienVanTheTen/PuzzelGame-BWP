@@ -39,6 +39,7 @@ public class TutorialTextScript : MonoBehaviour
     }
     public IEnumerator DisplayTutorialText(string text, float duration)
     {
+        
         textComponent.text = text;
         float timer = 0;
         bool forward = true;
@@ -75,8 +76,10 @@ public class TutorialTextScript : MonoBehaviour
             }
 
             timer += Time.deltaTime;
+           
             yield return null;
 
         }
+       
     }
 }

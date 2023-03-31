@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FoodCollected : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class FoodCollected : MonoBehaviour
     {
         foodCollected++;
         display.DisplayProgress(foodCollected, amountOfFoodOnMap);
+        if(foodCollected == amountOfFoodOnMap)
+        {
+            SceneManager.LoadScene("Endscreen");
+        }
 
     }
 

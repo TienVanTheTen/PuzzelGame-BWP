@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public void startGame()
     {
         SceneManager.LoadScene("StartCutSceneGame");
-        PauseMenu.isPaused = false;
+        
 
 
     }
@@ -20,6 +20,6 @@ public class MainMenu : MonoBehaviour
     public void Tutorial()
     {
         SceneManager.LoadScene("Tutorial");
-        PauseMenu.isPaused = false;
+        
     }
 }

@@ -85,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
         localScale.x = differencePos.x >= 0 ? -1 : 1;
         transform.localScale = localScale;
     }
+
+    //Animation jumping
     void JumpAnimation()
     {
         if (IsGrounded() == false)
